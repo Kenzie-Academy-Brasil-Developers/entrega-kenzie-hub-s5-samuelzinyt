@@ -1,0 +1,33 @@
+.div__input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--gray-0);
+    font-size: 0.8125rem;
+    font-weight: 400;
+  }
+
+  input {
+    color: var(--gray-0);
+    width: 20.5625rem;
+    border: 1px solid var(--gray-0);
+    border-radius: 4px;
+    padding: 1rem;
+  }
+
+  input::placeholder {
+    color: var(--gray-1);
+    font-weight: 400;
+  }
+}
+
+.span__message {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+}

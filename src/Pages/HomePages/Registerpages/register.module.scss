@@ -1,0 +1,126 @@
+header {
+  width: 100%;
+  height: 4.375rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+
+  .div__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 178px;
+    width: 100%;
+
+    h1 {
+      color: var(--color-primary);
+    }
+
+    button {
+      border: none;
+      border-radius: 4px;
+      background-color: var(--gray-3);
+      width: 3.75rem;
+      height: 2.5rem;
+      color: var(--gray-0);
+      font-size: 0.75rem;
+      font-weight: 600;
+
+      a {
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  width: 25.625rem;
+  height: 66.125rem;
+  margin-bottom: 80px;
+  background-color: var(--gray-3);
+
+  .div__main {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 60px;
+
+    .title__form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+
+      h2 {
+        color: var(--gray-0);
+        font-size: 1.125rem;
+        font-weight: 700;
+      }
+
+      p {
+        color: var(--gray-1);
+        font-size: 0.875rem;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.label__module {
+    color: var(--gray-0);
+    font-size: 0.8125rem;
+    font-weight: 400;
+}
+
+.div__select {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+
+  select {
+    color: var(--gray-1);
+    font-weight: 400;
+    width: 22.6875rem;
+    height: 3.125rem;
+    border: 1px solid var(--gray-0);
+    border-radius: 4px;
+    padding: 1rem;
+
+    option {
+      display: flex;
+      flex-direction: column;
+      color: #f8f9fa;
+      font-size: 0.875rem;
+      font-weight: 600;
+      background-color: #212529;
+    }
+  }
+}
+
+.button__register__form {
+    border: 1px;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: 600;
+    background-color: var(--color-primary-negative);
+    height: 3rem;
+
+    a {
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 500;
+        border: none;
+        text-decoration: none;
+    }
+}
+
+.button__register__form:hover {
+    background-color: var(--color-primary-focus);
+    color: #ffffff;
+}
