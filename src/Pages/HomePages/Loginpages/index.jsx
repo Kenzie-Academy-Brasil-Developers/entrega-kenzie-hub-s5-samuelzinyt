@@ -5,11 +5,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
 import { LoginSchema } from "./formscHemaLogin";
-import { api } from "../../../services/api";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useContext } from "react";
+import { Context } from "../../../providers/context";
 
 const LoginPage = () => {
+  const { submitLogin } = useContext(Context);
+
   const {
     register,
     handleSubmit,
@@ -17,27 +18,6 @@ const LoginPage = () => {
   } = useForm({
     resolver: zodResolver(LoginSchema),
   });
-
-  const navigate = useNavigate();
-
-  const submitLogin = async (loginData) => {
-    try {
-      await api
-        .post("/sessions", loginData)
-
-        .then((res) => {
-          localStorage.setItem("@TOKEN", res.data.token);
-        });
-
-      toast.success("Logado com sucess! Redirecioando para dashboard")
-      setTimeout(() => {
-        navigate("/DashBoard");
-      }, 3000);
-    } catch (error) {
-      toast.error("Ops! Algo deu errado");
-      console.log(error);
-    }
-  };
 
   return (
     <main>
@@ -57,11 +37,13 @@ const LoginPage = () => {
             type="text"
             register={register("email")}
             error={errors.email}
+            placeholder="Digite seu email de login"
           />
           <InputEyePassword
             label="Senha"
             register={register("password")}
             error={errors.password}
+            placeholder="Digite sua senha de login"
           />
 
           <button className={styles.button__acess}>Entrar</button>
@@ -69,7 +51,7 @@ const LoginPage = () => {
           <h2 className={styles.h2__acess}>Ainda não possui conta?</h2>
 
           <button className={styles.button__register}>
-          <Link to="/Register">Cadastre-se</Link>
+            <Link to="/Register">Cadastre-se</Link>
           </button>
         </div>
       </form>

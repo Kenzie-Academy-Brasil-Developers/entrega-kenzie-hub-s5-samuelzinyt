@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./dashboard.module.scss";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../../services/api";
+import { Context } from "../../../providers/context";
 
 const DashBoardPage = () => {
-  const tokenLogin = localStorage.getItem("@TOKEN");
-
-  const [userData, setUserData] = useState({});
+  const { userData, setUserData, UserLogout, tokenLogin } = useContext(Context);
 
   const navigate = useNavigate();
 
-  tokenLogin === undefined ? navigate("/") : false;
-
   useEffect(() => {
+    if (!tokenLogin) {
+      navigate("/");
+      return;
+    }
+
     try {
       api
         .get("/profile", {
@@ -22,26 +24,20 @@ const DashBoardPage = () => {
         })
         .then((res) => {
           setUserData(res.data);
+          navigate("/DashBoard");
         })
         .catch((err) => console.log(err));
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [tokenLogin, navigate, setUserData]);
 
   return (
     <main>
       <header className={styles.header__dashboard}>
         <div className={styles.div__header__dashboard}>
           <h1>Kenzie hub</h1>
-          <button
-            onClick={() => {
-              localStorage.clear();
-              navigate("/");
-            }}
-          >
-            Sair
-          </button>
+          <button onClick={() => UserLogout()}>Sair</button>
         </div>
       </header>
 

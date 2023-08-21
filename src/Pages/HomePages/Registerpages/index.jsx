@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
 import Input from "../../../Components/Header/input";
-import { Link } from "react-router-dom";
 import styles from "./register.module.scss";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "./formscHemaRegister";
-import { api } from "../../../services/api";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../../providers/context";
 
 const RegisterPage = () => {
+  const { submitRegister, navigate } = useContext(Context);
+
   const {
     register,
     handleSubmit,
@@ -17,27 +17,12 @@ const RegisterPage = () => {
     resolver: zodResolver(registerSchema),
   });
 
-  const navigate = useNavigate();
-
-  const submitRegister = async (formData) => {
-    try {
-      await api.post("/users", formData);
-      toast.success("Conta criada com sucesso!");
-      navigate("/");
-    } catch (error) {
-      toast.error("Ops! algo deu errado");
-      console.log(error);
-    }
-  };
-
   return (
     <main>
       <header>
         <div className={styles.div__header}>
           <h1>Kenzie hub</h1>
-          <button>
-            <Link to="/">Voltar</Link>
-          </button>
+          <button onClick={() => navigate("/")}>Voltar</button>
         </div>
       </header>
 

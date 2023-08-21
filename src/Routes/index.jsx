@@ -5,14 +5,16 @@ import DashBoardPage from "../Pages/HomePages/Dashboardpages";
 import Error404 from "../Pages/HomePages/Errorpage";
 
 const RouterMain = () => {
-    return(
-        <Routes>
-            <Route path="/" element={<LoginPage/>}/>
-            <Route path="/Register" element={<RegisterPage/>}/>
-            <Route path="/DashBoard" element={<DashBoardPage/>}/>
-            <Route path="*" element={<Error404/>}/>
-        </Routes>
-    )
-}
+  return (
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/Register" element={<RegisterPage />} />
+      <Route>
+        <Route path="/DashBoard" element={<DashBoardPage />} />
+      </Route>
+      <Route path="*" element={<Error404 />} />
+    </Routes>
+  );
+};
 
 export default RouterMain;
