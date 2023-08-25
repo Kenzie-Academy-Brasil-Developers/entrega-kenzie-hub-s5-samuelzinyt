@@ -1,0 +1,39 @@
+.overlayBox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  overflow: scroll;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modalBox {
+    width: 24rem;
+    height: 45vh;
+    background-color: var(--gray-3);
+
+    .div__header__modal {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px;
+    }
+
+    .form__create__techs {
+      height: 182px;
+      width: 383px;
+
+      .div__form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      select {
+        width: 345px;
+      }
+    }
+  }
+}

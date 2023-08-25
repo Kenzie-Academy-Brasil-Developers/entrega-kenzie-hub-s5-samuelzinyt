@@ -3,10 +3,12 @@ import styles from "./dashboard.module.scss";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../../services/api";
 import { Context } from "../../../providers/context";
+import TechList from "../../../Components/Header/TechList";
+import { TecnologiesContext } from "../../../providers/TechnologiesContext";
 
 const DashBoardPage = () => {
   const { userData, setUserData, UserLogout, tokenLogin } = useContext(Context);
-
+  const { setTechs } = useContext(TecnologiesContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,6 +26,7 @@ const DashBoardPage = () => {
         })
         .then((res) => {
           setUserData(res.data);
+          setTechs(res.data.techs);
           navigate("/DashBoard");
         })
         .catch((err) => console.log(err));
@@ -42,16 +45,15 @@ const DashBoardPage = () => {
       </header>
 
       <div className={styles.div__header}>
-        <h2>Olá {userData.name}</h2>
-        <p>{userData.course_module}</p>
+        {userData && (
+          <>
+            <h2>Olá {userData.name}</h2>
+            <p>{userData.course_module}</p>
+          </>
+        )}
       </div>
 
-      <div className={styles.div__content}>
-        <h2>Que pena! Estamos em desenvolvimento :(</h2>
-        <p>
-          Nossa aplicação está em desenvolvimento, em breve teremos novidades
-        </p>
-      </div>
+      <TechList />
     </main>
   );
 };

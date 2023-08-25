@@ -3,6 +3,7 @@ import LoginPage from "../Pages/HomePages/Loginpages";
 import RegisterPage from "../Pages/HomePages/Registerpages";
 import DashBoardPage from "../Pages/HomePages/Dashboardpages";
 import Error404 from "../Pages/HomePages/Errorpage";
+import { TecnologiesProvider } from "../providers/TechnologiesContext";
 
 const RouterMain = () => {
   return (
@@ -10,7 +11,14 @@ const RouterMain = () => {
       <Route path="/" element={<LoginPage />} />
       <Route path="/Register" element={<RegisterPage />} />
       <Route>
-        <Route path="/DashBoard" element={<DashBoardPage />} />
+        <Route
+          path="/DashBoard"
+          element={
+            <TecnologiesProvider>
+              <DashBoardPage />
+            </TecnologiesProvider>
+          }
+        />
       </Route>
       <Route path="*" element={<Error404 />} />
     </Routes>
