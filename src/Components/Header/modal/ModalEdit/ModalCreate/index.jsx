@@ -37,10 +37,11 @@ const CreateTecnologies = ({ setIsVisible }) => {
           >
             <div className={styles.div__form}>
               <InputModal
+              label="Nome"
                 placeholder="Ex: Iniciante"
                 type="text"
                 register={register("title")}
-                error={errors.title}
+                value="title"
               />
 
               <label>Selecionar status</label>
@@ -48,7 +49,6 @@ const CreateTecnologies = ({ setIsVisible }) => {
                 className={styles.select__editModal}
                 name="status"
                 {...register("status")}
-                error={errors.status}
               >
                 <option value="Iniciante">Iniciante</option>
                 <option value="Intermediário">Intermediário</option>

@@ -26,10 +26,10 @@ const TechList = () => {
       ) : null}
 
       <div className={styles.div__container}>
-        <div>
+        <div className={styles.div__card}>
           <ul>
-            {techs.map(({ id, status, title }) => (
-              <TechCard key={id} status={status} title={title} id={id} />
+            {techs.map((tech) => (
+              <TechCard key={tech.id} id={tech.id} tech={tech}/>
             ))}
           </ul>
         </div>

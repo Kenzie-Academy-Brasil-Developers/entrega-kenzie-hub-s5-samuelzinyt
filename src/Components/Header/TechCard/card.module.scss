@@ -1,31 +1,47 @@
 .div__header {
-    display: flex;
-    justify-content: space-between
+  display: flex;
+  justify-content: space-between;
+  border-radius: 4px;
 }
 
 .div__main {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 700px;
-    width: 100%;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 650px;
+  width: 100%;
+  background-color: var(--gray-4);
+  border-radius: 4px;
 
   .div__status {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 340px;
+    gap: 280px;
+    margin-left: 25px;
 
     h2 {
-        width: 200px;
+      color: var(--gray-0);
+      font-size: 15.21px;
+      font-weight: 700;
+      width: 200px;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray-1);
     }
   }
 
   .div__buttons {
     display: flex;
-    gap: 15px;
-    margin-left: 10px;
+    gap: 12px;
+    margin-right: 10px;
+
+    button {
+      background-color: transparent;
+    }
   }
 }

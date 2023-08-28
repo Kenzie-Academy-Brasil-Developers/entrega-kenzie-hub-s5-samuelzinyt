@@ -5,12 +5,12 @@ import { GiPencil } from "react-icons/gi";
 import ModalEdit from "../modal/ModalEdit";
 import styles from "./card.module.scss";
 
-const TechCard = ({ status, title, id }) => {
+const TechCard = ({ tech }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const { deleteTech } = useContext(TecnologiesContext);
+  const { deleteTech, setEditTechs, ediTechs } = useContext(TecnologiesContext);
 
   const setId = () => {
-    localStorage.setItem("@TechId", `${id}`);
+    localStorage.setItem("@TechId", `${tech.id}`);
   };
 
   return (
@@ -18,27 +18,30 @@ const TechCard = ({ status, title, id }) => {
       <div className={styles.div__header}>
         <div className={styles.div__main}>
           <div className={styles.div__status}>
-            <h2>{title}</h2>
-            <p>{status}</p>
+            <h2>{tech.title}</h2>
+            <p>{tech.status}</p>
           </div>
 
           <div className={styles.div__buttons}>
             <button
               onClick={() => {
                 setIsVisible(true);
+                setEditTechs(tech)
               }}
             >
               <GiPencil />
             </button>
 
             {isVisible ? (
-              <ModalEdit isVisible={isVisible} setIsVisible={setIsVisible} />
+              <ModalEdit isVisible={isVisible} setIsVisible={setIsVisible}
+            />
             ) : null}
 
             <button
-              onClick={() => {
+              onClick={async () => {
                 setId();
-                deleteTech(id);
+                await deleteTech(tech.id);
+                // Não é necessário fazer nada aqui, o estado já foi atualizado
               }}
             >
               <RiDeleteBin5Line size={19} />
