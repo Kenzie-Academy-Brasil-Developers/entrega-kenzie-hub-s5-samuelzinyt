@@ -9,8 +9,8 @@ const ModalEdit = ({ setIsVisible }) => {
 
   const { register, handleSubmit } = useForm({
     values: {
-      title: ediTechs.title,
-      status: ediTechs.status,
+      title: ediTechs?.title,
+      status: ediTechs?.status,
     },
   });
 
@@ -27,7 +27,7 @@ const ModalEdit = ({ setIsVisible }) => {
           </div>
 
           <form
-            onClick={() => handleSubmit(submit)}
+            onSubmit={handleSubmit(submit)}
             className={styles.form__edit__techs}
           >
             <div className={styles.div__form}>

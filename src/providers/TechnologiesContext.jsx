@@ -33,7 +33,7 @@ export const TecnologiesProvider = ({ children }) => {
           Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
         },
       });
-      setTechs((prevTechs) => prevTechs.filter((tech) => tech.id !== techId));
+      setTechs((prevTechs) => prevTechs.filter((tech) => tech.id !== localStorage.getItem("@TechId")));
     } catch (error) {
       console.log(error);
     }
@@ -42,20 +42,17 @@ export const TecnologiesProvider = ({ children }) => {
   const editModal = async (formData) => {
     try {
       const token = localStorage.getItem("@TOKEN");
-      await api.put(`/users/techs/${techId}`, formData, {
+      const { data } = await api.put(`/users/techs/${techId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      const newTechnologies = techs.map((tech) => {
-        if (tech.id === techId) {
-          return formData;
-        } else {
-          return tech;
-        }
-      });
-      setTechs(newTechnologies);
-      setEditTechs(null);
+      const updatedTechs = techs.map((tech) =>
+      tech.id === techId ? { ...techs, ...data } : tech
+    );
+      console.log(tech.id)
+    // setTechs(updatedTechs);
+    //   setEditTechs(null);
     } catch (error) {
       console.log(error);
     }
