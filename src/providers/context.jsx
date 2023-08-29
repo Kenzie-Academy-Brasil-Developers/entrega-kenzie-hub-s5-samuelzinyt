@@ -8,6 +8,7 @@ export const Context = createContext({});
 export const ContextProvider = ({ children }) => {
   const tokenLogin = localStorage.getItem("@TOKEN");
   const [userData, setUserData] = useState({});
+  const [techs, setTechs] = useState([]);
 
   const navigate = useNavigate();
 
@@ -60,6 +61,8 @@ export const ContextProvider = ({ children }) => {
         UserLogout,
         tokenLogin,
         navigate,
+        techs,
+        setTechs
       }}
     >
       {children}

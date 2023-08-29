@@ -7,9 +7,9 @@ export const TecnologiesContext = createContext({});
 
 export const TecnologiesProvider = ({ children }) => {
   const techId = localStorage.getItem("@TechId");
-  const [techs, setTechs] = useState([]);
   const [ediTechs, setEditTechs] = useState(null);
   const [currentTechId, setCurrentTechId] = useState(null);
+  const { techs, setTechs } = useContext(Context);
 
   const createTech = async (data) => {
     try {
