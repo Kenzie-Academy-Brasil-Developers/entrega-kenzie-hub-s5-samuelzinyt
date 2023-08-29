@@ -29,7 +29,7 @@ const TechList = () => {
         <div className={styles.div__card}>
           <ul>
             {techs.map((tech) => (
-              <TechCard key={tech.id} id={tech.id} tech={tech}/>
+              <TechCard key={tech.id} id={tech.id} tech={tech} />
             ))}
           </ul>
         </div>

@@ -1,8 +1,6 @@
-
-
 const DefaultTemplate = ({ children }) => {
 
-    return(
+    return (
         <>
             {children}
         </>

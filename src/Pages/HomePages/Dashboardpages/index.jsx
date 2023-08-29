@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./dashboard.module.scss";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../../services/api";

@@ -14,15 +14,17 @@ const ModalEdit = ({ setIsVisible }) => {
     },
   });
 
-  const submit = (formData) => {
-    editModal(formData);
+  const submit = async (formData) => {
+    await editModal(formData);
+    setIsVisible(false);
   };
+  
   return (
     <>
       <div role="dialog" className={styles.overlayBox}>
         <div className={styles.modalBox}>
           <div className={styles.div__header}>
-            <h2>Editar Tecnologia</h2>
+            <h2>Tecnologias Detalhes</h2>
             <button onClick={() => setIsVisible(false)}>X</button>
           </div>
 
@@ -34,17 +36,18 @@ const ModalEdit = ({ setIsVisible }) => {
               <InputModalEdit
                 label="Nome"
                 placeholder="Material UI"
+                disabled
                 register={register("title")}
               />
 
-              <label>Status</label>
+              <label className={styles.label__status}>Status</label>
               <select name="status" {...register("status")}>
                 <option value="Iniciante">Iniciante</option>
                 <option value="Intermediário">Intermediário</option>
                 <option value="Avançado">Avançado</option>
               </select>
 
-              <button type="submit">Salvar alterações</button>
+              <button type="submit" className={styles.button__save__edit}>Salvar alterações</button>
             </div>
           </form>
         </div>

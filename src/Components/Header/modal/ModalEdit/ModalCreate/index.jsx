@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { TecnologiesContext } from "../../../../../providers/TechnologiesContext";
-import Input from "../../../input";
 import styles from "./modalCreate.module.scss";
 import InputModal from "../../../inputModal";
 import { techsSchema } from "../../../TechList/techsSchema";
@@ -44,7 +43,7 @@ const CreateTecnologies = ({ setIsVisible }) => {
                 value="title"
               />
 
-              <label>Selecionar status</label>
+              <label className={styles.label__create}>Selecionar status</label>
               <select
                 className={styles.select__editModal}
                 name="status"
@@ -55,7 +54,7 @@ const CreateTecnologies = ({ setIsVisible }) => {
                 <option value="Avançado">Avançado</option>
               </select>
 
-              <button type="submit">Cadastrar tecnologia</button>
+              <button className={styles.button__register} type="submit">Cadastrar tecnologia</button>
             </div>
           </form>
         </div>

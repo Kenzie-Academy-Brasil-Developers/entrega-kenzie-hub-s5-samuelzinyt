@@ -7,11 +7,8 @@ import styles from "./card.module.scss";
 
 const TechCard = ({ tech }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const { deleteTech, setEditTechs, ediTechs } = useContext(TecnologiesContext);
-
-  const setId = () => {
-    localStorage.setItem("@TechId", `${tech.id}`);
-  };
+  const { deleteTech, setEditTechs, setCurrentTechId } =
+    useContext(TecnologiesContext);
 
   return (
     <>
@@ -26,22 +23,20 @@ const TechCard = ({ tech }) => {
             <button
               onClick={() => {
                 setIsVisible(true);
-                setEditTechs(tech)
+                setEditTechs(tech);
+                setCurrentTechId(tech.id); // Atualiza o estado com o ID da tecnologia
               }}
             >
               <GiPencil />
             </button>
 
             {isVisible ? (
-              <ModalEdit isVisible={isVisible} setIsVisible={setIsVisible}
-            />
+              <ModalEdit isVisible={isVisible} setIsVisible={setIsVisible} />
             ) : null}
 
             <button
-              onClick={async () => {
-                setId();
-                await deleteTech(tech.id);
-                // Não é necessário fazer nada aqui, o estado já foi atualizado
+              onClick={() => {
+                deleteTech(tech.id);
               }}
             >
               <RiDeleteBin5Line size={19} />

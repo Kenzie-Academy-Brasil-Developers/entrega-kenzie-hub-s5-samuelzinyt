@@ -1,10 +1,12 @@
+import styles from "./inputCreate.module.scss"
+
 const InputModal = ({ label, type, register, placeholder, ...rest }) => {
     return (
       <>
         <div>
-          <label>
+          <label className={styles.div__label}>
             {label}
-          <input type={type} {...register} placeholder={placeholder}/>
+          <input className={styles.input__edit} type={type} {...register} placeholder={placeholder}/>
           </label>
         </div>
       </>

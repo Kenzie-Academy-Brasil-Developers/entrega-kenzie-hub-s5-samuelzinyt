@@ -12,27 +12,72 @@
 
   .modalBox {
     width: 24rem;
-    height: 45vh;
+    height: 44vh;
     background-color: var(--gray-3);
 
     .div__header__modal {
       display: flex;
-      justify-content: space-between;
-      padding: 16px;
+      justify-content: space-around;
+      align-items: center;
+      gap: 140px;
+      background-color: var(--gray-2);
+      height: 3.125rem;
+
+      h2 {
+        color: var(--gray-0);
+        font-size: 0.875rem;
+        font-weight: 700;
+      }
+
+      button {
+        color: var(--gray-1);
+        font-size: 1rem;
+        font-weight: 600;
+        background-color: transparent;
+      }
     }
 
     .form__create__techs {
-      height: 182px;
-      width: 383px;
+      height: 13.625rem;
+      width: 23.9375rem;
+      margin-top: 15px;
 
       .div__form {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 17px;
+
+        .label__create {
+          color: var(--gray-0);
+          font-size: 0.8125rem;
+          font-weight: 400;
+        }
       }
 
       select {
-        width: 345px;
+        width: 21.5625rem;
+        height: 3.125rem;
+        padding: 12px;
+        border: none;
+        background-color: var(--gray-2);
+        font-weight: 400;
+        padding: 11px;
+        color: var(--gray-1);
+      }
+
+      .button__register {
+        background-color: var(--color-primary-negative);
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 500;
+        height: 6.25rem;
+      }
+
+      .button__register:hover {
+        background-color: var(--color-primary-focus);
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 500;
       }
     }
   }
